@@ -1,0 +1,16 @@
+        /* Configuración de color primario y fuente Inter */
+        :root {
+            --color-primary: #498428; /* Nuevo Verde Intenso */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+            min-height: 100vh;
+        }
+        .header-dashboard {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 3rem 1.5rem 6rem; /* Más padding para que el contenido de main se monte */
+            border-bottom-left-radius: 2rem;
+            border-bottom-right-radius: 2rem;
+        }

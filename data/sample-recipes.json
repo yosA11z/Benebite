@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "title": "Pancakes de avena y miel",
+        "type": "desayuno",
+        "ingredients": ["avena", "huevo", "leche", "miel"],
+        "allergens": ["gluten", "lactosa", "huevo"],
+        "instructions": "Mezcla todos los ingredientes, cocina en sartén antiadherente y sirve con miel.",
+        "tags": ["rápido", "suave"]
+    },
+    {
+        "id": 2,
+        "title": "Pollo en salsa de limón",
+        "type": "almuerzo",
+        "ingredients": ["pollo", "limón", "ajo", "sal", "pimienta"],
+        "allergens": [],
+        "instructions": "Sella el pollo, agrega limón y ajo, cocina a fuego lento hasta espesar la salsa.",
+        "tags": ["proteína", "ligero"]
+    },
+    {
+        "id": 3,
+        "title": "Carne en salsa dulce de soya",
+        "type": "almuerzo",
+        "ingredients": ["carne", "salsa de soya", "azúcar morena", "ajo"],
+        "allergens": ["soya"],
+        "instructions": "Cocina la carne, agrega salsa de soya con azúcar y deja reducir.",
+        "tags": ["salsa", "oriental"]
+    },
+    {
+        "id": 4,
+        "title": "Ensalada tropical de mango",
+        "type": "cena",
+        "ingredients": ["lechuga", "mango", "pepino", "limón"],
+        "allergens": [],
+        "instructions": "Combina todos los ingredientes y añade limón como aderezo.",
+        "tags": ["fresco", "ligero"]
+    },
+    {
+        "id": 5,
+        "title": "Pasta cremosa con champiñones",
+        "type": "cena",
+        "ingredients": ["pasta", "crema de leche", "champiñones", "mantequilla"],
+        "allergens": ["gluten", "lactosa"],
+        "instructions": "Saltea champiñones, agrega crema y mezcla con la pasta cocida.",
+        "tags": ["cremoso"]
+    },
+    {
+        "id": 6,
+        "title": "Postre de manzana al horno",
+        "type": "postre",
+        "ingredients": ["manzana", "canela", "azúcar", "mantequilla"],
+        "allergens": ["lactosa"],
+        "instructions": "Hornea la manzana con canela, azúcar y un toque de mantequilla.",
+        "tags": ["caliente", "dulce"]
+    },
+    {
+        "id": 7,
+        "title": "Brownie saludable de cacao",
+        "type": "postre",
+        "ingredients": ["cacao", "huevo", "avena", "miel"],
+        "allergens": ["gluten", "huevo"],
+        "instructions": "Mezcla todos los ingredientes y hornea por 20 minutos.",
+        "tags": ["dulce", "horneado"]
+    },
+    {
+        "id": 8,
+        "title": "Wrap de atún",
+        "type": "lonchera",
+        "ingredients": ["tortilla", "atún", "lechuga", "mayonesa"],
+        "allergens": ["gluten", "huevo", "pescado"],
+        "instructions": "Rellena la tortilla con atún y vegetales, enrolla y corta.",
+        "tags": ["práctico", "proteína"]
+    },
+    {
+        "id": 9,
+        "title": "Smoothie de frutos rojos",
+        "type": "lonchera",
+        "ingredients": ["fresas", "arándanos", "yogur", "miel"],
+        "allergens": ["lactosa"],
+        "instructions": "Licúa los ingredientes hasta obtener un batido espeso.",
+        "tags": ["frío", "energético"]
+    },
+    {
+        "id": 10,
+        "title": "Huevos revueltos con espinaca",
+        "type": "desayuno",
+        "ingredients": ["huevo", "espinaca", "sal", "aceite"],
+        "allergens": ["huevo"],
+        "instructions": "Saltea la espinaca, agrega los huevos batidos y cocina suavemente.",
+        "tags": ["rápido", "saludable"]
+    }
+]

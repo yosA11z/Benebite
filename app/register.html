@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benebite - Crear cuenta</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        :root {
+            --dark-green: #011f0e;
+            --primary-green: #38b04a;
+            --text-light: #ffffff;
+            --text-muted: #aaaaaa;
+            --bg-dark: #000000;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: var(--dark-green);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: var(--text-light);
+        }
+
+        .container {
+            display: flex;
+            width: 800px;
+            max-width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            background-color: var(--bg-dark);
+        }
+
+        .login-panel {
+            width: 50%;
+            padding: 60px 50px;
+        }
+
+        .title {
+            font-size: 3em;
+            font-weight: normal;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-family: sans-serif;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .input-group {
+            margin-bottom: 30px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: var(--primary-green);
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 8px 0;
+            border: none;
+            border-bottom: 1px solid var(--primary-green);
+            background: transparent;
+            color: var(--text-light);
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            border-bottom-color: var(--text-light);
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-green);
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: background-color 0.3s;
+        }
+
+        .login-button:hover {
+            background-color: #58d86a;
+        }
+
+        .options {
+            margin-bottom: 40px;
+            font-size: 0.8em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sign-in-button {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: var(--text-light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        .social-login {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .or {
+            font-size: 0.7em;
+            color: var(--text-muted);
+            margin: 20px 0;
+            display: block;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            border: 1px solid var(--text-muted);
+            border-radius: 50%;
+            color: var(--text-muted);
+            font-size: 1.1em;
+            transition: border-color 0.3s, color 0.3s;
+        }
+
+        .social-icon:hover {
+            border-color: var(--primary-green);
+            color: var(--primary-green);
+        }
+
+        .image-panel {
+            width: 50%;
+            background: url('/assets/images/landing-page.avif') no-repeat center center / cover;
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px;
+        }
+
+        .image-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), var(--dark-green));
+            opacity: 0.6;
+        }
+
+        #errorBox {
+            color: #ff5050;
+            margin-bottom: 20px;
+            font-size: 0.85em;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .login-panel, .image-panel {
+                width: 100%;
+            }
+            .image-panel {
+                height: 200px;
+            }
+        }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(56, 176, 74, 0.95);
+            color: white;
+            padding: 14px 20px;
+            border-radius: 8px;
+            font-family: sans-serif;
+            font-size: 0.9em;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity .4s, transform .4s;
+            z-index: 9999;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="login-panel">
+        <h1 class="title">Crear cuenta</h1>
+        <p class="subtitle">Regístrate para comenzar.</p>
+
+        <div id="errorBox"></div>
+
+        <form id="signup-form">
+            <div class="input-group">
+                <label for="email">CORREO</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">CONTRASEÑA</label>
+                <input type="password" id="password" minlength="6" required>
+            </div>
+
+            <div class="options">
+                <span></span>
+                <a class="sign-in-button" id="login-btn">Iniciar sesión</a>
+            </div>
+
+            <button type="submit" class="login-button">REGISTRARME</button>
+        </form>
+
+        <div class="social-login">
+            <span class="or">O</span>
+            <div class="social-icons">
+                <a id="google-login" class="social-icon"><i class="fab fa-google"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-panel"></div>
+
+    <div id="toast" class="toast">Cuenta creada. Revisa tu correo.</div>
+
+
+</div>
+
+<script>
+    const supabase = window.supabase.createClient(
+        "https://gcxifaihiliitnonaqby.supabase.co",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdjeGlmYWloaWxpaXRub25hcWJ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMzNDk1ODAsImV4cCI6MjA3ODkyNTU4MH0.UR7mJ5OcpEVOVEUzjJ8XZiXcScU-ivOK0q7jxBO_a9g"
+    );
+
+    // Botón "Iniciar sesión"
+    document.getElementById("login-btn").addEventListener("click", () => {
+        window.location.href = "login.html";
+    });
+
+    // Registro email + password
+    document.getElementById("signup-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const errorBox = document.getElementById("errorBox");
+
+        errorBox.style.display = "none";
+
+        const { data, error } = await supabase.auth.signUp({
+            email,
+            password,
+            options: {
+                emailRedirectTo: window.location.origin + "/app/auth-callback.html"
+            }
+        });
+
+        if (error) {
+            errorBox.textContent = error.message;
+            errorBox.style.display = "block";
+            return;
+        }
+
+        showToast("Cuenta creada. Revisa tu correo.");
+            setTimeout(() => {
+            window.location.href = "login.html";
+        }, 2500);
+
+    });
+
+    // Registro con Google
+    document.getElementById("google-login").addEventListener("click", async () => {
+        await supabase.auth.signInWithOAuth({
+            provider: "google",
+            options: {
+                redirectTo: window.location.origin + "/app/auth-callback.html"
+            }
+        });
+    });
+
+    function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3000); // desaparece después de 3s
+}
+
+</script>
+
+</body>
+</html>

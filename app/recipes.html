@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recetas — Benebite</title>
+    <link rel="stylesheet" href="../css/recipes.css">
+</head>
+
+<body>
+    <nav class="nav">
+        <a href="dashboard.html">← Volver</a>
+        <h2>Recetas</h2>
+    </nav>
+
+    <main class="recipes-container">
+
+        <div class="recipes-controls">
+            <input type="text" id="searchInput" placeholder="Buscar receta...">
+            
+            <select id="filterType">
+                <option value="all">Todas</option>
+                <option value="desayuno">Desayuno</option>
+                <option value="almuerzo">Almuerzo</option>
+                <option value="cena">Cena</option>
+                <option value="lonchera">Lonchera</option>
+                <option value="postre">Postre</option>
+            </select>
+        </div>
+
+        <div id="recipesList" class="recipes-list"></div>
+
+    </main>
+
+    <script src="/js/storage.js"></script>
+    <script src="/js/recipes.js"></script>
+</body>
+</html>

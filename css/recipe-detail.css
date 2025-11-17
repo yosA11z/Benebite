@@ -1,0 +1,182 @@
+/* ——————————————————————
+    BASE
+—————————————————————— */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    background: #faf9f6; /* tono crema recetario */
+    color: #2a2a2a;
+}
+
+/* ——————————————————————
+    NAV
+—————————————————————— */
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px 25px;
+    background: white;
+    border-bottom: 1px solid #e8e6e0;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #0095ff;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 5px 10px;
+    transition: 0.2s ease;
+}
+
+.nav a:hover {
+    background: #f2f8ff;
+}
+
+/* ——————————————————————
+    CONTAINER
+—————————————————————— */
+
+.recipe-detail-container {
+    max-width: 900px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+/* ——————————————————————
+    IMAGE HEADER — estilo recetario premium
+—————————————————————— */
+
+.recipe-cover {
+    width: 100%;
+    height: 320px;
+    border-radius: 18px;
+    object-fit: cover;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+}
+
+/* ——————————————————————
+    HEAD INFO BLOCK — tiempo, dificultad, porciones
+—————————————————————— */
+
+.recipe-meta {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.meta-box {
+    background: #fff;
+    padding: 18px 22px;
+    border-radius: 14px;
+    border: 1px solid #e7e4df;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+}
+
+.meta-box span {
+    font-size: 14px;
+    color: #6b6b6b;
+}
+
+.meta-box strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 17px;
+    color: #1a1a1a;
+}
+
+/* ——————————————————————
+    SECTION TITLES — elegante editorial
+—————————————————————— */
+
+#recipeContent h3 {
+    margin-top: 35px;
+    margin-bottom: 10px;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+/* ——————————————————————
+    INGREDIENTES — estilo recetario de cocina
+—————————————————————— */
+
+.ingredients-list {
+    background: #fff;
+    padding: 25px 28px;
+    border-radius: 16px;
+    border: 1px solid #e6e2db;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    margin-bottom: 35px;
+}
+
+.ingredients-list ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.ingredients-list li {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #f1eee8;
+}
+
+.ingredients-list li:last-child {
+    border-bottom: none;
+}
+
+/* ——————————————————————
+    INSTRUCCIONES — pasos numerados elegantes
+—————————————————————— */
+
+.instructions {
+    margin-top: 20px;
+}
+
+.step {
+    background: white;
+    border: 1px solid #e7e3dc;
+    padding: 22px 25px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+    display: flex;
+    gap: 20px;
+}
+
+.step-number {
+    width: 34px;
+    height: 34px;
+    background: #ffb85c; /* naranja cálido */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    color: white;
+    flex-shrink: 0;
+}
+
+.step p {
+    margin: 0;
+    line-height: 1.55;
+}
+
+/* ——————————————————————
+    ALERGIAS
+—————————————————————— */
+
+.allergies {
+    margin-top: 30px;
+    background: #fff4f4;
+    border: 1px solid #ffdada;
+    padding: 18px 22px;
+    border-radius: 12px;
+}

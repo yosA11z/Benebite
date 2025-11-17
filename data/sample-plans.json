@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "BENEBITE free",
+        "price": 0,
+        "features": [
+            "Acceso al calendario semanal",
+            "Acceso a recetas básicas",
+            "Encuesta y perfil nutricional"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Plan oro mensual",
+        "price": 50000,
+        "features": [
+            "Charla de dos horas con el psicólogo",
+            "Personalización basica"
+        ]
+    },
+{
+        "id": 3,
+        "name": "Plan diamante mensual",
+        "price": 250000,
+        "features": [
+            "5 skip de comidas",
+            "5 espacios para publicar su propia receta",
+            "3 sesiones con psicóloga y 3 sesiones con nutricionista",
+            "Croco semana es un desafío de racha alcanzó una meta de 15 días al obtenerla puedes ganar cupones de descuento en restaurantes", "personalización delta es más  centrada para cambiar el aspecto de la web app"
+        ]
+    }
+]

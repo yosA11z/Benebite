@@ -1,0 +1,334 @@
+/*
+ * Archivo CSS para la Encuesta Inicial de Vitacare
+ * Estilo: Lujo Minimalista de Aplicación (Innovador, Interactivo, Premium)
+ *
+ * Paleta de Colores (Verde Oscuro y Blanco Puro):
+ * --color-main-brand: Verde Bosque Profundo (Tono Joya)
+ * --color-accent: Verde Esmeralda Suave (Acentos, Hover)
+ * --color-background: Blanco Puro (Lienzo de Lujo)
+ * --color-text-dark: Gris Oscuro (Texto principal para alto contraste)
+ * --color-border: Gris Pálido (Para líneas de base y bordes)
+ */
+
+/* NUEVA LÍNEA: Importación de la fuente elegante */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap');
+
+:root {
+  --color-main-brand: #057a55; /* Deep Forest Green (Rich Jewel Tone) */
+  --color-accent: #34d399; /* Soft Emerald for focus/hover */
+  --color-secondary: #04664a; /* Even Darker green for button active state */
+  --color-background: #ffffff; /* Pure White Canvas */
+  --color-card-bg: #F9FAFB; /* Subtle background for inputs */
+  --color-text-dark: #111827; /* Darker, high-contrast text */
+  --color-border: #e5e7eb; /* Soft border color */
+  --font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  --transition-speed: 0.3s;
+}
+
+/* --- Base & Reset --- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-background);
+  color: var(--color-text-dark);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+/* --- Header Styling --- */
+
+header {
+  text-align: center;
+  padding: 20px 20px 25px;
+  width: 100%;
+}
+
+header h1 {
+  /* MODIFICADO: Aplicamos la nueva fuente y ajustamos el estilo */
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 6vw, 4.2rem); /* Ligeramente más grande */
+  font-weight: 700; /* Ajustado al peso importado */
+  color: var(--color-main-brand);
+  margin-bottom: 5px;
+  letter-spacing: -1px; /* Ajuste para la nueva fuente */
+}
+
+header p {
+  font-size: 1.15rem;
+  color: #6b7280;
+  font-weight: 400;
+  margin-top: 5px;
+  letter-spacing: 0.5px;
+}
+
+/* --- Form Container (Invisible Grid) --- */
+
+/* Eliminamos la tarjeta. El contenedor es solo para centrar el grid. */
+.container {
+  width: 100%;
+  max-width: 750px; /* Un poco más ancho para el nuevo layout */
+  padding: 0 20px;
+}
+
+/* El formulario es el layout, no una tarjeta. */
+#surveyForm {
+  background: transparent;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  animation: none; /* Las animaciones de entrada ahora están en los elementos */
+}
+
+/* --- Form Sections and Labels --- */
+
+@keyframes fadeInElement {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-section {
+  margin-bottom: 35px; /* Más espacio vertical */
+  padding-bottom: 0;
+  border-bottom: none;
+  
+  /* Animación de entrada para cada sección */
+  opacity: 0;
+  animation: fadeInElement 0.6s ease-out forwards;
+}
+
+/* Delays escalonados para las secciones */
+.form-section:nth-of-type(1) { animation-delay: 0.1s; }
+.form-section:nth-of-type(2) { animation-delay: 0.2s; }
+.form-section:nth-of-type(3) { animation-delay: 0.3s; }
+.form-section:nth-of-type(4) { animation-delay: 0.4s; }
+.form-section:nth-of-type(5) { animation-delay: 0.5s; }
+
+
+.form-section label:not(.checkbox-group label) {
+  display: block;
+  font-size: 1.1rem; /* Etiquetas más grandes y audaces */
+  font-weight: 700;
+  margin-bottom: 12px; 
+  color: var(--color-text-dark);
+  letter-spacing: 0.5px;
+  /* Ya no está en mayúsculas, más amigable y premium */
+}
+
+/* --- INNOVACIÓN: Campos de Texto "Underline" --- */
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px 10px; /* Padding optimizado para línea base */
+  border: none;
+  border-bottom: 2px solid var(--color-border); /* Línea de base */
+  border-radius: 0; /* Bordes afilados */
+  font-size: 1.1rem; /* Texto de entrada más grande */
+  color: var(--color-text-dark);
+  background-color: var(--color-card-bg); /* Fondo sutil para el campo */
+  transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+  appearance: none;
+}
+
+/* Estado de enfoque (Focus) minimalista */
+input[type="text"]:focus,
+select:focus {
+  border-bottom-color: var(--color-main-brand); /* La línea se vuelve verde */
+  box-shadow: 0 4px 10px rgba(5, 122, 85, 0.1); /* Sombra sutil de "elevación" */
+  outline: none;
+  background-color: var(--color-background);
+}
+
+/* Flecha de selección personalizada (estilo minimalista) */
+select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23057A55'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 1.1em;
+  padding-right: 40px;
+}
+
+/* --- INNOVACIÓN: Checkboxes como Botones Interactivos --- */
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Columnas flexibles */
+  gap: 12px; /* Espacio entre botones */
+  margin-top: 10px; 
+}
+
+/* Ocultamos el checkbox real */
+.checkbox-group input[type="checkbox"] {
+  appearance: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+/* La etiqueta es el botón */
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #4b5563;
+  cursor: pointer;
+  user-select: none;
+  padding: 12px 15px; /* Padding de botón */
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  transition: all 0.2s ease-out;
+}
+
+/* Hover: El botón reacciona */
+.checkbox-group label:hover {
+    border-color: var(--color-accent);
+    color: var(--color-main-brand);
+}
+
+/* Checked: El botón se "activa" con estilo premium */
+.checkbox-group input[type="checkbox"]:checked + label {
+  border-color: var(--color-accent); /* Igual que hover */
+  color: var(--color-main-brand);    /* Igual que hover */
+  background-color: rgba(5, 122, 85, 0.05); /* Sutil fondo premium */
+  box-shadow: 0 5px 15px rgba(5, 122, 85, 0.15);
+  transform: translateY(-1px);
+}
+
+
+/* --- Submit Button (Fuerte y Coherente) --- */
+
+button[type="submit"] {
+  width: 100%;
+  padding: 16px 25px; 
+  background-image: linear-gradient(to top, var(--color-main-brand) 0%, var(--color-secondary) 150%);
+  background-color: var(--color-main-brand); 
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px; /* Coherente con los botones de checkbox */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 12px 30px rgba(5, 122, 85, 0.45); 
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  
+  opacity: 0;
+  animation: fadeInElement 0.6s ease-out forwards;
+  animation-delay: 0.6s;
+}
+
+button[type="submit"]:hover {
+  background-image: none;
+  background-color: var(--color-secondary);
+  box-shadow: 0 16px 35px rgba(4, 102, 74, 0.55);
+  transform: translateY(-2px); /* Elevación de lujo */
+}
+
+
+button[type="submit"]:active {
+  transform: translateY(1px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Responsive Adjustments (Manteniendo el Grid Aprobado) --- */
+
+@media (min-width: 800px) {
+    #surveyForm {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        grid-template-areas:
+            "name    allergies"
+            "diet    preferences"
+            ".       treatment"
+            "submit  submit";
+        gap: 30px 60px; /* Más "aire" (lujo) entre columnas */
+    }
+
+    .form-section {
+        margin-bottom: 0;
+    }
+    
+    /* Asignamos las áreas a cada sección */
+    .form-section:nth-of-type(1) { grid-area: name; }
+    .form-section:nth-of-type(2) { grid-area: diet; }
+    .form-section:nth-of-type(3) { grid-area: allergies; }
+    .form-section:nth-of-type(4) { grid-area: preferences; }
+    .form-section:nth-of-type(5) { grid-area: treatment; }
+
+    /* El botón se extiende a lo ancho */
+    button[type="submit"] {
+        grid-area: submit;
+        margin-top: 20px;
+    }
+}
+
+
+/* Single Column Layout for Mobile (Max-width 799px) */
+@media (max-width: 799px) {
+  body {
+    padding: 0;
+    justify-content: flex-start;
+  }
+  
+  header {
+    padding: 20px 20px 15px; 
+  }
+
+  .container {
+    padding: 0 25px; /* Padding para el contenido en móvil */
+  }
+
+  #surveyForm {
+    padding: 25px 0; /* Padding vertical en el form */
+  }
+
+  .form-section {
+    margin-bottom: 30px; 
+  }
+
+  /* Los botones-checkbox se adaptan */
+  .checkbox-group {
+    grid-template-columns: 1fr 1fr; /* 2 columnas en móvil */
+    gap: 10px; 
+  }
+
+  input[type="text"], select, .checkbox-group label {
+    font-size: 1rem; /* Ligeramente más pequeño en móvil para encajar */
+  }
+
+  button[type="submit"] {
+    padding: 16px; 
+    font-size: 1.1rem;
+  }
+}
+.form-section {
+  position: relative; /* para que los spans absolutos se posicionen respecto a la sección */
+}
+
+.error-message {
+  position: absolute;
+  bottom: -30px; /* justo debajo del grupo de checkboxes */
+  left: 0;
+  color: #dc2626;
+  font-size: 0.95rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.error-message.active {
+  opacity: 1;
+}

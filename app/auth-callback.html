@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Auth Callback</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <h2>Procesando inicio de sesión...</h2>
+
+  <script>
+    const supabase = window.supabase.createClient(
+      'https://gcxifaihiliitnonaqby.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdjeGlmYWloaWxpaXRub25hcWJ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMzNDk1ODAsImV4cCI6MjA3ODkyNTU4MH0.UR7mJ5OcpEVOVEUzjJ8XZiXcScU-ivOK0q7jxBO_a9g'
+    );
+
+    async function handleRedirect() {
+      // Espera a que Supabase termine de procesar el login OAuth
+      const { data: { session }, error } = await supabase.auth.getSession();
+
+      if (error) {
+        console.error("Error obteniendo sesión:", error);
+        return;
+      }
+
+      if (!session) {
+        console.log("No hay sesión activa");
+        return;
+      }
+
+      const user = session.user;
+
+      console.log("Usuario logueado:", user);
+
+      // Revisar metadata
+      const firstTime = !user.user_metadata?.has_completed_onboarding;
+
+      if (firstTime) {
+        // Marcar que ya pasó la primera vez para futuras sesiones
+        await supabase.auth.updateUser({
+          data: { has_completed_onboarding: true }
+        });
+
+        window.location.href = "/app/encuesta.html";
+      } else {
+        window.location.href = "/app/dashboard.html";
+      }
+    }
+
+    handleRedirect();
+  </script>
+</body>
+</html>

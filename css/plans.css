@@ -1,0 +1,192 @@
+/* ——————————————————————
+   0. BASE — Apple Clean
+—————————————————————— */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background: linear-gradient(145deg, #fefefe, #f3f5f7);
+    color: #111;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ——————————————————————
+   1. NAV — Glass Premium
+—————————————————————— */
+
+.nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px 26px;
+    backdrop-filter: blur(22px) saturate(180%);
+    background: rgba(255, 255, 255, 0.55);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    z-index: 20;
+}
+
+.nav a {
+    text-decoration: none;
+    font-size: 14px;
+    padding: 6px 14px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: #007aff;
+    transition: 0.25s ease;
+}
+
+.nav a:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateX(-3px);
+}
+
+.nav h2 {
+    font-weight: 600;
+    font-size: 20px;
+    color: #111;
+    letter-spacing: -0.3px;
+}
+
+/* ——————————————————————
+   2. MAIN
+—————————————————————— */
+
+.plans-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.plans-container > p {
+    font-size: 17px;
+    opacity: 0.75;
+    margin-bottom: 30px;
+}
+
+/* ——————————————————————
+   3. PLAN LIST GRID
+—————————————————————— */
+
+.plans-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+    padding-bottom: 50px;
+}
+
+/* ——————————————————————
+   4. PLAN CARD — Apple Glass Recipe Style
+—————————————————————— */
+
+.plan-card {
+    padding: 30px 26px;
+    border-radius: 28px;
+
+    /* liquid glass */
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+
+    /* shadows */
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.08),
+        inset 0 0 1px rgba(255, 255, 255, 0.7);
+
+    text-align: left;
+    animation: fadeIn 0.6s ease;
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* mini glowing accent (como recetario premium) */
+.plan-card::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 200, 90, 0.25),
+        transparent 70%
+    );
+}
+
+/* ——————————————————————
+   5. TEXTOS
+—————————————————————— */
+
+.plan-card h3 {
+    font-size: 24px;
+    margin: 0 0 12px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+}
+
+.price {
+    font-size: 27px;
+    color: #007aff;
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+/* ——————————————————————
+   6. LISTA DE FEATURES
+—————————————————————— */
+
+.plan-card ul {
+    padding-left: 20px;
+    margin-bottom: 28px;
+    opacity: 0.8;
+}
+
+.plan-card li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+    list-style: "✔  ";
+    font-size: 15px;
+}
+
+/* ——————————————————————
+   7. BOTÓN — Apple Primary
+—————————————————————— */
+
+.btn-primary {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+
+    color: white;
+    background: linear-gradient(90deg, #007aff, #4da7ff);
+
+    box-shadow: 0 6px 18px rgba(0, 122, 255, 0.35);
+    transition: 0.25s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 122, 255, 0.4);
+}
+
+/* ——————————————————————
+   ANIMATIONS
+—————————————————————— */
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

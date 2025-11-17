@@ -1,0 +1,573 @@
+/* ========== Fuente ========== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ========== Variables ========== */
+:root {
+    --amarillo: #FDB913;
+    --azul-claro: #4FC3F7;
+    --verde-menta: #26A69A;
+    --naranja: #FF6F3C;
+    --bg-main: #F8F9FA;
+    --bg-white: #FFFFFF;
+    --text-primary: #202124;
+    --text-secondary: #5F6368;
+    --text-light: #80868B;
+    --border: #E0E0E0;
+    --shadow: rgba(0, 0, 0, 0.08);
+    --shadow-hover: rgba(0, 0, 0, 0.12);
+}
+
+/* ========== Reset ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-main);
+    color: var(--text-primary);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ========== Navegación ========== */
+.nav {
+    background: var(--bg-white);
+    padding: 20px 32px;
+    box-shadow: 0 1px 3px var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    background: var(--bg-main);
+}
+
+.nav a:hover {
+    background: var(--amarillo);
+    color: var(--text-primary);
+}
+
+.nav h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-left: auto;
+}
+
+/* ========== Container ========== */
+.calendar-container {
+    padding: 32px;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+/* ========== Grid Semanal (7 columnas) ========== */
+#weekly-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+/* ========== Tarjeta de Día ========== */
+.day-card {
+    background: var(--bg-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px var(--shadow);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.day-card:hover {
+    box-shadow: 0 4px 16px var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+/* ========== Header con imagen ========== */
+.day-header {
+    background: linear-gradient(135deg, var(--azul-claro), var(--verde-menta));
+    padding: 24px 16px;
+    text-align: center;
+    position: relative;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Overlay para legibilidad */
+.day-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+        rgba(79, 195, 247, 0.85) 0%, 
+        rgba(38, 166, 154, 0.85) 100%);
+    z-index: 1;
+}
+
+.day-header > * {
+    position: relative;
+    z-index: 2;
+}
+
+.day-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--bg-white);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 8px;
+    opacity: 0.95;
+}
+
+.day-date {
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--bg-white);
+    letter-spacing: -1px;
+}
+
+/* Día actual con círculo */
+.day-card.today .day-date {
+    background: var(--bg-white);
+    color: var(--azul-claro);
+    width: 56px;
+    height: 56px;
+    line-height: 56px;
+    border-radius: 50%;
+    display: inline-block;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Imágenes de fondo para cada día */
+.day-card:nth-child(1) .day-header {
+    background-image: url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&h=300&fit=crop');
+}
+
+.day-card:nth-child(1) .day-header::before {
+    background: linear-gradient(135deg, rgba(253, 185, 19, 0.85), rgba(255, 111, 60, 0.85));
+}
+
+.day-card:nth-child(2) .day-header {
+    background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop');
+}
+
+.day-card:nth-child(2) .day-header::before {
+    background: linear-gradient(135deg, rgba(79, 195, 247, 0.85), rgba(38, 166, 154, 0.85));
+}
+
+.day-card:nth-child(3) .day-header {
+    background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop');
+}
+
+.day-card:nth-child(3) .day-header::before {
+    background: linear-gradient(135deg, rgba(38, 166, 154, 0.85), rgba(79, 195, 247, 0.85));
+}
+
+.day-card:nth-child(4) .day-header {
+    background-image: url('https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=300&fit=crop');
+}
+
+.day-card:nth-child(4) .day-header::before {
+    background: linear-gradient(135deg, rgba(255, 111, 60, 0.85), rgba(253, 185, 19, 0.85));
+}
+
+.day-card:nth-child(5) .day-header {
+    background-image: url('https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?w=400&h=300&fit=crop');
+}
+
+.day-card:nth-child(5) .day-header::before {
+    background: linear-gradient(135deg, rgba(253, 185, 19, 0.85), rgba(38, 166, 154, 0.85));
+}
+
+.day-card:nth-child(6) .day-header {
+    background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop');
+}
+
+.day-card:nth-child(6) .day-header::before {
+    background: linear-gradient(135deg, rgba(79, 195, 247, 0.85), rgba(255, 111, 60, 0.85));
+}
+
+.day-card:nth-child(7) .day-header {
+    background-image: url('https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=400&h=300&fit=crop');
+}
+
+.day-card:nth-child(7) .day-header::before {
+    background: linear-gradient(135deg, rgba(38, 166, 154, 0.85), rgba(253, 185, 19, 0.85));
+}
+
+/* ========== Lista de Comidas ========== */
+.meals-list {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.meal-item {
+    padding: 14px;
+    border-radius: 10px;
+    background: var(--bg-main);
+    border-left: 4px solid var(--amarillo);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.meal-item:hover {
+    background: #F0F0F0;
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+/* Colores por tipo de comida */
+.meal-item.breakfast {
+    border-left-color: var(--amarillo);
+    background: linear-gradient(90deg, rgba(253, 185, 19, 0.08) 0%, var(--bg-main) 100%);
+}
+
+.meal-item.lunch {
+    border-left-color: var(--verde-menta);
+    background: linear-gradient(90deg, rgba(38, 166, 154, 0.08) 0%, var(--bg-main) 100%);
+}
+
+.meal-item.snack {
+    border-left-color: var(--azul-claro);
+    background: linear-gradient(90deg, rgba(79, 195, 247, 0.08) 0%, var(--bg-main) 100%);
+}
+
+.meal-item.dinner {
+    border-left-color: var(--naranja);
+    background: linear-gradient(90deg, rgba(255, 111, 60, 0.08) 0%, var(--bg-main) 100%);
+}
+
+.meal-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.meal-icon {
+    font-size: 18px;
+    line-height: 1;
+}
+
+.meal-type {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.meal-description {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-left: 26px;
+    margin-bottom: 6px;
+}
+
+.meal-calories {
+    display: inline-block;
+    margin-left: 26px;
+    font-size: 11px;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* ========== Vista Mensual ========== */
+.monthly-lock {
+    background: var(--bg-white);
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.monthly-lock h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.monthly-lock p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Header del calendario mensual */
+.monthly-header {
+    margin-bottom: 24px;
+}
+
+.monthly-header h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Grid mensual */
+.monthly-grid {
+    width: 100%;
+}
+
+.month-day-names {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+}
+
+.month-day-name {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px;
+}
+
+.month-days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.month-day {
+    background: var(--bg-main);
+    border-radius: 8px;
+    padding: 8px;
+    min-height: 120px;
+    border: 1px solid var(--border);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.month-day:hover {
+    background: #F0F0F0;
+    border-color: var(--azul-claro);
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.month-day.empty {
+    background: transparent;
+    border: none;
+    cursor: default;
+}
+
+.month-day.empty:hover {
+    background: transparent;
+    box-shadow: none;
+}
+
+.month-day.today {
+    border: 2px solid var(--azul-claro);
+    background: rgba(79, 195, 247, 0.05);
+}
+
+.month-day-number {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.month-day.today .month-day-number {
+    background: var(--azul-claro);
+    color: white;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.month-day-meals {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.month-meal {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    padding: 4px 6px;
+    background: var(--bg-white);
+    border-radius: 4px;
+    border-left: 2px solid var(--amarillo);
+}
+
+.month-meal-icon {
+    font-size: 12px;
+}
+
+.month-meal-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+}
+
+.month-meal-more {
+    font-size: 10px;
+    color: var(--text-light);
+    text-align: center;
+    padding: 4px;
+    font-weight: 600;
+}
+
+/* Responsive para vista mensual */
+@media (max-width: 1200px) {
+    .month-day {
+        min-height: 100px;
+    }
+    
+    .month-meal-text {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .monthly-lock {
+        padding: 20px 16px;
+    }
+    
+    .month-days-grid {
+        gap: 4px;
+    }
+    
+    .month-day {
+        min-height: 80px;
+        padding: 6px;
+    }
+    
+    .month-day-number {
+        font-size: 14px;
+    }
+    
+    .month-meal {
+        padding: 3px 4px;
+        gap: 4px;
+    }
+    
+    .month-meal-icon {
+        font-size: 10px;
+    }
+}
+
+/* ========== Estado Vacío ========== */
+.empty-day {
+    padding: 32px 16px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+.empty-day::before {
+    content: '🍽️';
+    display: block;
+    font-size: 32px;
+    margin-bottom: 12px;
+    opacity: 0.4;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 1400px) {
+    #weekly-calendar {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 1000px) {
+    #weekly-calendar {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        background: var(--bg-white);
+    }
+
+    .calendar-container {
+        padding: 16px;
+    }
+
+    .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px 20px;
+    }
+
+    .nav h2 {
+        margin-left: 0;
+        font-size: 18px;
+    }
+
+    #weekly-calendar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .day-header {
+        min-height: 120px;
+        padding: 20px 12px;
+    }
+
+    .day-date {
+        font-size: 28px;
+    }
+
+    .meals-list {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .monthly-lock {
+        padding: 32px 24px;
+    }
+}
+
+@media (max-width: 500px) {
+    #weekly-calendar {
+        grid-template-columns: 1fr;
+    }
+
+    .day-card {
+        min-height: auto;
+    }
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benebite - Dashboard</title>
+    <!-- Carga de Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carga de Lucide Icons (para íconos bonitos) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#057a55', // Nuevo Verde Intenso
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- 1. ENCABEZADO Y BIENVENIDA -->
+    <header class="header-dashboard shadow-md">
+        <!-- Estos elementos serán actualizados por app.js con el nombre real del usuario -->
+        <h1 id="welcomeText" class="text-3xl font-bold mb-1">Cargando...</h1>
+        <p id="treatmentText" class="text-lg opacity-90 mb-1"></p>
+        <p id="planText" class="text-sm opacity-80"></p>
+    </header>
+
+    <main class="main-dashboard p-4 -mt-16 md:-mt-20">
+        <!-- 2. MOTIVACIÓN Y DATOS INTERESANTES (100% relleno genérico) -->
+        <section class="mb-8">
+            <!-- Título con fondo verde para permitir el texto blanco -->
+            <div class="bg-[#498428] px-4 py-2 rounded-t-xl mb-3 ">
+                <h2 class="text-xl font-semibold text-white">Motivación y Datos Interesantes</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                
+                <!-- Dato Curioso Nutricional -->
+                <div class="bg-white p-4 rounded-xl shadow-lg border-l-4 border-primary">
+                    <div class="flex items-center space-x-2 mb-1">
+                        <i data-lucide="carrot" class="w-6 h-6 text-primary"></i>
+                        <span class="text-sm font-medium text-gray-500">Dato Curioso</span>
+                    </div>
+                    <p class="text-lg font-bold text-gray-800">El 90% de la serotonina se produce en el intestino.</p>
+                    <p class="text-xs text-gray-500 mt-1">¡La salud intestinal es clave!</p>
+                </div>
+
+                <!-- Frase de Motivación -->
+                <div class="bg-white p-4 rounded-xl shadow-lg border-l-4 border-indigo-500">
+                    <div class="flex items-center space-x-2 mb-1">
+                        <i data-lucide="trending-up" class="w-6 h-6 text-indigo-500"></i>
+                        <span class="text-sm font-medium text-gray-500">Frase del Día</span>
+                    </div>
+                    <p class="text-lg font-bold text-gray-800">"El único ejercicio malo es el que no haces."</p>
+                    <p class="text-xs text-green-600 mt-1">¡Da el primer paso hoy!</p>
+                </div>
+                
+                <!-- Noticias de Bienestar -->
+                <div class="bg-white p-4 rounded-xl shadow-lg border-l-4 border-amber-500 hidden md:block">
+                    <div class="flex items-center space-x-2 mb-1">
+                        <i data-lucide="newspaper" class="w-6 h-6 text-amber-500"></i>
+                        <span class="text-sm font-medium text-gray-500">Noticias</span>
+                    </div>
+                    <a href="https://pepsic.bvsalud.org/scielo.php?script=sci_arttext&pid=S2220-90262011000100009"> <p class="text-lg font-bold text-gray-800">Nueva investigación sobre la calidad del sueño.</p>
+                    <p class="text-xs text-gray-500 mt-1">Leer artículo completo</p></a>
+                </div>
+
+                <!-- Recordatorio General -->
+                <div class="bg-white p-4 rounded-xl shadow-lg border-l-4 border-pink-500">
+                    <div class="flex items-center space-x-2 mb-1">
+                        <i data-lucide="bell" class="w-6 h-6 text-pink-500"></i>
+                        <span class="text-sm font-medium text-gray-500">Recordatorio</span>
+                    </div>
+                    <p class="text-lg font-bold text-gray-800">No olvides estirarte 5 minutos hoy.</p>
+                    <p class="text-xs text-blue-500 mt-1">¡La constancia es la clave!</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. NOVEDADES Y RECOMENDACIONES (Contenido Genérico - Mismo que te gustó) -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold mb-3 text-gray-700">Novedades y Recomendaciones</h2>
+            <div class="bg-white p-5 rounded-xl shadow-lg divide-y divide-gray-100">
+                
+                <!-- Elemento 1: Consejo Nutricional -->
+                <div class="flex justify-between items-center py-2">
+                    <div class="flex items-center space-x-3">
+                        <i data-lucide="apple" class="w-5 h-5 text-green-500"></i>
+                        <div>
+                            <p class="font-medium">Consejo Nutricional del Día</p>
+                            <p class="text-sm text-gray-500">Aumenta tu ingesta de fibra hoy.</p>
+                        </div>
+                    </div>
+                    <span class="text-sm font-bold text-green-500">¡Nuevo!</span>
+                </div>
+
+                <!-- Elemento 2: Desafío Semanal -->
+                <div class="flex justify-between items-center py-2">
+                    <div class="flex items-center space-x-3">
+                        <i data-lucide="target" class="w-5 h-5 text-orange-500"></i>
+                        <div>
+                            <p class="font-medium">Desafío de la Semana</p>
+                            <p class="text-sm text-gray-500">Beber 2 litros de agua diarios.</p>
+                        </div>
+                    </div>
+                    <span class="text-sm font-bold text-green-500">¡Nuevo!</span>
+                </div>
+                
+                <!-- Elemento 3: Artículos Recomendados -->
+                <div class="flex justify-between items-center py-2">
+                    <div class="flex items-center space-x-3">
+                        <i data-lucide="book-open" class="w-5 h-5 text-gray-500"></i>
+                        <div>
+                            <p class="font-medium">Artículo Recomendado</p>
+                            <p class="text-sm text-gray-500">Cómo manejar el estrés laboral.</p>
+                        </div>
+                    </div>
+                    <a href="https://es.knowablemagazine.org/content/articulo/sociedad/2022/como-afrontar-estres-laboral-y-recuperarse-realmente-del-burnout?gad_campaignid=22923261960"> <span class="text-sm text-gray-400">Leer Ahora</span> </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. NAVEGACIÓN PRINCIPAL (Card Grid) -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold mb-3 text-gray-700">Acceso Rápido</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+                <!-- Este es el enlace con id="goCalendar" que necesita el JS -->
+                <a href="calendar.html" id="goCalendar" class="card bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] border-t-4 border-primary">
+                    <i data-lucide="calendar" class="w-8 h-8 text-primary mb-2"></i>
+                    <h3 class="text-lg font-bold text-gray-800">Calendario semanal</h3>
+                    <p class="text-sm text-gray-500 mt-1">Ver tus comidas, ejercicios y citas.</p>
+                </a>
+
+                <a href="recipes.html" class="card bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] border-t-4 border-orange-500">
+                    <i data-lucide="utensils" class="w-8 h-8 text-orange-500 mb-2"></i>
+                    <h3 class="text-lg font-bold text-gray-800">Recetas Saludables</h3>
+                    <p class="text-sm text-gray-500 mt-1">Explorar comidas recomendadas según tu plan.</p>
+                </a>
+
+                <a href="plans.html" class="card bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] border-t-4 border-purple-500">
+                    <i data-lucide="gem" class="w-8 h-8 text-purple-500 mb-2"></i>
+                    <h3 class="text-lg font-bold text-gray-800">Mejorar mi Plan</h3>
+                    <p class="text-sm text-gray-500 mt-1">Ver beneficios y desbloquear funciones Premium.</p>
+                </a>
+
+                <a href="chat.html" class="card bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] border-t-4 border-blue-500">
+                    <i data-lucide="message-square" class="w-8 h-8 text-blue-500 mb-2"></i>
+                    <h3 class="text-lg font-bold text-gray-800">Chat / Soporte</h3>
+                    <p class="text-sm text-gray-500 mt-1">Soporte directo en Psicología y Nutrición.</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- 6. FOOTER/NAVEGACIÓN FIJA (Mockup) -->
+    <footer class="bg-white border-t border-gray-100 p-3 fixed bottom-0 w-full z-10 md:hidden shadow-xl">
+        <div class="flex justify-around text-center text-xs">
+            <!-- NOTA: El ícono "home" usa el color primary para indicar que es la página actual -->
+            <a href="#" class="text-primary flex flex-col items-center">
+                <i data-lucide="home" class="w-6 h-6"></i>
+                Inicio
+            </a>
+            <a href="calendar.html" class="text-gray-500 flex flex-col items-center">
+                <i data-lucide="calendar" class="w-6 h-6"></i>
+                Agenda
+            </a>
+            <a href="recipes.html" class="text-gray-500 flex flex-col items-center">
+                <i data-lucide="utensils" class="w-6 h-6"></i>
+                Comidas
+            </a>
+            <a href="chat.html" class="text-gray-500 flex flex-col items-center">
+                <i data-lucide="message-square" class="w-6 h-6"></i>
+                Chat
+            </a>
+        </div>
+    </footer>
+
+    <!-- SCRIPT DE INICIALIZACIÓN (Solo para Lucide Icons y ajustes de CSS) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializar Lucide Icons
+            lucide.createIcons();
+            
+            // Ajustar el padding inferior del body para la barra de navegación fija en móviles
+            if (window.innerWidth < 768) {
+                document.body.style.paddingBottom = '4rem';
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Carga del script con la lógica de usuario (app.js) -->
+    <script src="/js/app.js"></script>
+
+</body>
+</html>

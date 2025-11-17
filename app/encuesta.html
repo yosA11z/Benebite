@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vitacare – Encuesta Inicial</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Benebite</h1>
+    <p>Cuéntanos un poco sobre ti</p>
+  </header>
+
+  <div class="container">
+    <form id="surveyForm" autocomplete="off">
+
+      <div class="form-section">
+        <label for="name">Tu nombre *</label>
+        <input type="text" id="name" name="name" required placeholder="Ej: Ana María" />
+      </div>
+
+      <div class="form-section">
+        <label for="dietType">Tipo de dieta *</label>
+        <select id="dietType" name="dietType" required>
+          <option value="">Selecciona una opción</option>
+          <option value="carnivoro">Carnívoro</option>
+          <option value="omnivoro">Omnívoro</option>
+          <option value="vegetariano">Vegetariano</option>
+          <option value="vegano">Vegano</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+
+      <div class="form-section">
+        <label>Alergias alimentarias</label>
+        <div class="checkbox-group">
+          <input type="checkbox" id="allergy-gluten" name="allergies" value="gluten" />
+          <label for="allergy-gluten">Gluten</label>
+
+          <input type="checkbox" id="allergy-lacteos" name="allergies" value="lacteos" />
+          <label for="allergy-lacteos">Lácteos</label>
+
+          <input type="checkbox" id="allergy-frutosSecos" name="allergies" value="frutosSecos" />
+          <label for="allergy-frutosSecos">Frutos secos</label>
+
+          <input type="checkbox" id="allergy-mariscos" name="allergies" value="mariscos" />
+          <label for="allergy-mariscos">Mariscos</label>
+
+          <input type="checkbox" id="allergy-ninguna" name="allergies" value="ninguna" />
+          <label for="allergy-ninguna">Ninguna</label>
+        </div>
+        <!-- Mensaje de error / notificación -->
+        <span class="error-message" id="allergies-error">Por favor selecciona al menos una alergia.</span>
+      </div>
+
+      <div class="form-section">
+        <label>Preferencias de sabor</label>
+        <div class="checkbox-group">
+          <input type="checkbox" id="pref-dulce" name="preferences" value="dulce" />
+          <label for="pref-dulce">Dulce</label>
+
+          <input type="checkbox" id="pref-salado" name="preferences" value="salado" />
+          <label for="pref-salado">Salado</label>
+
+          <input type="checkbox" id="pref-picante" name="preferences" value="picante" />
+          <label for="pref-picante">Picante</label>
+
+          <input type="checkbox" id="pref-neutral" name="preferences" value="neutral" />
+          <label for="pref-neutral">Sin preferencia</label>
+        </div>
+        <!-- Mensaje de error / notificación -->
+        <span class="error-message" id="preferences-error">Por favor selecciona al menos una preferencia.</span>
+      </div>
+
+      <div class="form-section">
+        <label for="treatmentType">Tipo de tratamiento *</label>
+        <select id="treatmentType" name="treatmentType" required>
+          <option value="">Selecciona una opción</option>
+          <option value="crohn">Enfermedad de Crohn</option>
+          <option value="colitis">Colitis ulcerosa</option>
+          <option value="indefinido">Indefinido / Evaluación</option>
+        </select>
+      </div>
+
+      <button type="submit" disabled>Guardar y continuar</button>
+    </form>
+  </div>
+
+  <script src="/js/storage.js"></script>
+  <script src="/js/survey.js"></script>
+  <script src="/js/required.js"></script>
+</body>
+</html>

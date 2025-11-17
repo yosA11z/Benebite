@@ -1,0 +1,211 @@
+/* ========== RESET ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+}
+
+body {
+    background: linear-gradient(160deg, #eef3ff, #ffffff);
+    color: #1a1a1a;
+    padding-bottom: 80px;
+}
+
+/* ========== NAV SUPER APPLE ========== */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px 28px;
+
+    position: sticky;
+    top: 0;
+    z-index: 50;
+
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(22px) saturate(180%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+
+    border-bottom: 1px solid rgba(255,255,255,0.35);
+}
+
+.nav a {
+    text-decoration: none;
+    padding: 7px 14px;
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.35);
+    border: 1px solid rgba(255,255,255,0.4);
+    backdrop-filter: blur(14px);
+
+    color: #1a1a1a;
+    font-weight: 500;
+
+    transition: .25s;
+}
+
+.nav a:hover {
+    background: rgba(255,255,255,0.55);
+}
+
+.nav h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: linear-gradient(90deg,#1a1a1a,#3b3b3b);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: -0.4px;
+}
+
+/* ========== CONTENEDOR GENERAL ========== */
+.recipes-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 25px;
+}
+
+/* ========== CONTROLES (BUSCADOR + SELECT) ========== */
+.recipes-controls {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 30px;
+}
+
+.recipes-controls input,
+.recipes-controls select {
+    flex: 1;
+    padding: 14px 16px;
+    font-size: 1rem;
+    border-radius: 16px;
+
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(255,255,255,0.4);
+
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+
+    color: #1a1a1a;
+    transition: .25s;
+
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+}
+
+.recipes-controls input::placeholder {
+    color: rgba(0,0,0,0.45);
+}
+
+.recipes-controls input:focus,
+.recipes-controls select:focus {
+    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+}
+
+/* ========== GRID DE RECETAS ========== */
+.recipes-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 32px;
+}
+
+/* ========== TARJETA APPLE LIQUID GLASS ========== */
+.recipe-card {
+    border-radius: 24px;
+    overflow: hidden;
+
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(255,255,255,0.4);
+
+    backdrop-filter: blur(22px) saturate(180%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+
+    box-shadow:
+        0 4px 14px rgba(0,0,0,0.08),
+        0 12px 32px rgba(0,0,0,0.08);
+
+    transition: 0.35s;
+    position: relative;
+}
+
+/* Hover premium */
+.recipe-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 6px 20px rgba(0,0,0,0.12),
+        0 16px 40px rgba(0,0,0,0.10);
+}
+
+/* Reflejo suave */
+.recipe-card::before {
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: -40%;
+    width: 180%;
+    height: 180%;
+    background: radial-gradient(
+        circle,
+        rgba(255,255,255,0.65) 0%,
+        transparent 70%
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .4s;
+}
+
+.recipe-card:hover::before {
+    opacity: 0.20;
+}
+
+/* ========== IMAGEN ========== */
+.recipe-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+
+/* ========== CONTENIDO INTERIOR ========== */
+.recipe-card-content {
+    padding: 22px;
+}
+
+.recipe-card h3 {
+    font-size: 1.22rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+
+    background: linear-gradient(90deg,#1a1a1a,#333);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.recipe-card p {
+    margin-bottom: 8px;
+    color: rgba(0,0,0,0.75);
+}
+
+/* ========== BOTÓN ========== */
+.recipe-card button {
+    margin-top: 16px;
+    width: 100%;
+    padding: 12px;
+
+    border: 1px solid rgba(255,255,255,0.45);
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(12px);
+
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+
+    cursor: pointer;
+    transition: .25s;
+}
+
+.recipe-card button:hover {
+    transform: scale(1.04);
+    background: rgba(255,255,255,0.55);
+}
