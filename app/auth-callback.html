@@ -6,9 +6,59 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="icon" href="/assets/images/favicon.jpeg" type="image/x-icon">
   <link rel="shortcut icon" href="/assets/images/favicon.jpeg" type="image/x-icon">
+
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+    }
+
+    /* Animación de carga */
+    .loader {
+      border: 5px solid rgba(255, 255, 255, 0.2);
+      border-top: 5px solid white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Mensaje secundario */
+    p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
 </head>
 <body>
+  <div class="loader"></div>
   <h2>Procesando inicio de sesión...</h2>
+  <p>Esto puede tardar unos segundos, por favor espera.</p>
 
   <script>
     const supabase = window.supabase.createClient(
@@ -17,7 +67,6 @@
     );
 
     async function handleRedirect() {
-      // Espera a que Supabase termine de procesar el login OAuth
       const { data: { session }, error } = await supabase.auth.getSession();
 
       if (error) {
@@ -34,11 +83,9 @@
 
       console.log("Usuario logueado:", user);
 
-      // Revisar metadata
       const firstTime = !user.user_metadata?.has_completed_onboarding;
 
       if (firstTime) {
-        // Marcar que ya pasó la primera vez para futuras sesiones
         await supabase.auth.updateUser({
           data: { has_completed_onboarding: true }
         });
